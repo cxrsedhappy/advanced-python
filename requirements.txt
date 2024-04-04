@@ -1,4 +1,4 @@
-torch==2.2.1+cu121
+torch~=2.2.1+cu121
 torchaudio==2.2.1+cu121
 torchvision==0.17.1+cu121
 
@@ -7,3 +7,9 @@ pandas==2.2.1
 matplotlib==3.8.3
 seaborn==0.13.2
 mlxtend==0.23.1
+
+tqdm~=4.66.2
+datasets~=2.18.0
+tokenizers~=0.15.2
+torchtext~=0.17.2
+wandb~=0.16.6
