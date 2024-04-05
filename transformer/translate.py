@@ -1,11 +1,12 @@
-from pathlib import Path
-from config import get_config, latest_weights_file_path
-from model import build_transformer
-from tokenizers import Tokenizer
-from datasets import load_dataset
-from dataset import BilingualDataset
 import torch
-import sys
+
+from model import build_transformer
+from pathlib import Path
+from datasets import load_dataset
+from tokenizers import Tokenizer
+
+from dataset import BilingualDataset
+from config import get_config, latest_weights_file_path
 
 
 def translate(sentence: str):
@@ -52,10 +53,12 @@ def translate(sentence: str):
         decoder_input = torch.empty(1, 1).fill_(tokenizer_tgt.token_to_id('[SOS]')).type_as(source).to(device)
 
         # Print the source sentence and target start prompt
-        if label != "": print(f"{f'ID: ':>12}{id}")
-        print(f"{f'SOURCE: ':>12}{sentence}")
-        if label != "": print(f"{f'TARGET: ':>12}{label}")
-        print(f"{f'PREDICTED: ':>12}", end='')
+        if label != "":
+            print(f"{f'ID: ':<12}{id}")
+        print(f"{f'SOURCE: ':<12}{sentence}")
+        if label != "":
+            print(f"{f'TARGET: ':<12}{label}")
+        print(f"{f'PREDICTED: ':<12}", end='')
 
         # Generate the translation word by word
         while decoder_input.size(1) < seq_len:
@@ -82,4 +85,4 @@ def translate(sentence: str):
 
 
 # read sentence from argument
-translate(sys.argv[1] if len(sys.argv) > 1 else "I am not a very good a student.")
+translate("Кошка бежала по тротуару и была черная")
