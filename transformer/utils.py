@@ -3,7 +3,7 @@ import math
 
 def scaled_dot_product_attention(q, k, v, mask, dropout):
     d_k = q.shape[-1]
-    attention = (q @ k.transpose(-2, -1)) / math.sqrt(d_k)  # @ is matmul holy shit
+    attention = (q @ k.transpose(-2, -1)) / math.sqrt(d_k)  # @ is matmul
 
     if mask is not None:
         attention.masked_fill_(mask == 0, -1e9)
@@ -14,3 +14,6 @@ def scaled_dot_product_attention(q, k, v, mask, dropout):
         attention = dropout(attention_scores)
 
     return (attention @ v), attention
+
+
+
