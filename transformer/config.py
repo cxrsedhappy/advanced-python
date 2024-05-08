@@ -32,4 +32,5 @@ def latest_weights_file_path(config):
     if len(weights_files) == 0:
         return None
     weights_files.sort()
+    print(str(weights_files[-1]))
     return str(weights_files[-1])

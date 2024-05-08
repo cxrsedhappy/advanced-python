@@ -84,5 +84,4 @@ def translate(sentence: str):
     return tokenizer_tgt.decode(decoder_input[0].tolist())
 
 
-# read sentence from argument
-translate("Кошка бежала по тротуару и была черная")
+translate("black cat")
